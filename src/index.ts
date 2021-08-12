@@ -1,6 +1,2 @@
-export {
-    IWordFrequency,
-    IWordFrequencyAnalyser,
-    WordFrequency,
-    WordFrequencyAnalyser
-} from './word-frequency-analyser';
+export {IWordFrequencyAnalyser,WordFrequencyAnalyser} from './word-frequency-analyser';
+export {IWordFrequency, WordFrequency} from './word-frequency';

@@ -1,30 +1,9 @@
-export interface IWordFrequency {
-    getWord(): string;
-    getFrequency(): number;
-}
+import {WordFrequency} from './word-frequency';
 
 export interface IWordFrequencyAnalyser {
     calculateHighestFrequency(text: string): number;
     calculateFrequencyForWord(text: string, word: string): number;
     calculateMostFrequentNWords(text: string, n: number): WordFrequency[];
-}
-
-export class WordFrequency implements IWordFrequency {
-    private _word: string;
-    private _frequency: number;
-
-    constructor(word: string, frequency: number) {
-        this._word = word;
-        this._frequency = frequency;
-    }
-
-    getWord(): string {
-        return this._word;
-    }
-
-    getFrequency(): number {
-        return this._frequency;
-    }
 }
 
 export class WordFrequencyAnalyser implements IWordFrequencyAnalyser {

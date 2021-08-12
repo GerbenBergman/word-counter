@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/GerbenBergman/word-counter#readme",
   "devDependencies": {
+    "@types/jasmine": "^3.8.2",
     "jasmine-core": "^3.8.0",
     "karma": "^6.3.4",
     "karma-chrome-launcher": "^3.1.0",

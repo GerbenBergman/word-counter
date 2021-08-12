@@ -2,7 +2,11 @@
   "name": "gerben-bergman-word-counter",
   "version": "1.0.0",
   "description": "Library that implements word counting utilities",
-  "main": "index.ts",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "test": "npm test"
   },

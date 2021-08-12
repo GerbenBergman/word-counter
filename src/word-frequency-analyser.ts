@@ -25,21 +25,19 @@ export class WordFrequencyAnalyser implements IWordFrequencyAnalyser {
             }
         });
 
-        wordOccurences = wordOccurences.sort((a, b) => {
-            if(a.getFrequency() < b.getFrequency()) {
-                return 1;
-            } else if(a.getFrequency() === b.getFrequency()) {
-                return a.getWord() > b.getWord() ? 1 : -1;
-            }
-
-            return -1;
-        });
-
-        wordOccurences = wordOccurences.slice(0, n);
-
-        return wordOccurences;
+        return wordOccurences.sort((a: WordFrequency, b: WordFrequency) => this.wordOccurencesSortFunction(a, b)).slice(0, n);
     }
     
+    private wordOccurencesSortFunction(a: WordFrequency, b: WordFrequency): number {
+        if(a.getFrequency() < b.getFrequency()) {
+            return 1;
+        } else if(a.getFrequency() === b.getFrequency()) {
+            return a.getWord() > b.getWord() ? 1 : -1;
+        }
+
+        return -1;
+    }
+
     private isWord(word: string): boolean {
         return new RegExp('^[a-zA-Z]+$').test(word);
     }

@@ -26,6 +26,8 @@
     <button *ngIf="!gameStarted && !gameFinished" mat-flat-button color="primary" (click)="startGame()">Start</button>
 
     <div *ngIf="gameStarted" class="game-field">
+        <h3>Question {{gameStage + 1}} of {{gameConfigurations.length}}</h3>
+
         <p>{{gameConfigurations[gameStage].getInstructions()}}</p>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -33,10 +35,7 @@
             <input #userInput matInput placeholder="Answer" value="">
         </mat-form-field>
 
-        <button *ngIf="gameStage !== gameConfigurations.length - 1" mat-flat-button color="primary"
-            (click)="nextGameStage(); submitSentence()">Next</button>
-        <button *ngIf="gameStage === gameConfigurations.length - 1" mat-flat-button color="primary"
-            (click)="finishGame(); submitSentence()">Finish game</button>
+        <button mat-flat-button color="primary" (click)="submitSentence()">{{gameStage !== gameConfigurations.length -1 ? 'next' : 'Finish game'}}</button>
     </div>
 
     <div *ngIf="gameFinished" class="result-field">
@@ -46,8 +45,10 @@
             <ul>
                 <li>Assignment: {{gameConfigurations[i].getInstructions()}}</li>
                 <li>Your answer: {{gameResult}}</li>
-                <li>Result: {{getResult(gameResult, gameConfigurations[i]) ? 'Good job! you passed this assignment!' : 'Bummer, you failed this assignment'}}</li>
+                <li>Result: {{getResult(gameResult, gameConfigurations[i]) ? 'Good job! you passed this assignment!' : 'Bummer... you failed this assignment'}}</li>
             </ul>
         </div>
+
+        <button mat-flat-button color="primary" [routerLink]="['/landing-page']">Back to landing page</button>
     </div>
 </div>

@@ -13,6 +13,7 @@ export class WordCounterComponent {
 
   gameStarted: boolean = false;
   gameFinished: boolean = false;
+
   wordList: string[] = ['this', 'is', 'name', 'who', 'distance', 'traveled', 'car', 'bike'];
   gameStage: number = 0;
   localGameResults: string[] = [];
@@ -27,6 +28,12 @@ export class WordCounterComponent {
   submitSentence(): void {
     this.localGameResults.push(this.userInput.nativeElement.value); 
     this.userInput.nativeElement.value = ''; 
+    
+    if(this.gameStage !== this.gameConfigurations.length -1) {
+      this.nextGameStage();
+    } else {
+      this.finishGame();
+    }
   }
  
   nextGameStage(): void {

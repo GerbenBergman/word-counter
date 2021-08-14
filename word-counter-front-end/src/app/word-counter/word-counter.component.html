@@ -1,1 +1,34 @@
-<p>word-counter works!</p>
+<div class="page-content">
+    <h1>Word Counter</h1>
+    <p>
+        Welcome to the word counting game. During this game you are challenged to form three sentences which should meet certain specifications.
+        These specifications are different for each sentence and are displayed above the input box in which you should enter your sentence. In this game,
+        words are considered to contain only alphabetical characters, which means the following examples are not considered words: 
+    </p>
+
+    <ul>
+        <li>'continue,'</li>
+        <li>'end.'</li>
+        <li>'combined-word'</li>
+        <li>'blasé'</li>
+    </ul>
+
+    <p>Both upper- and uderscore characters are allowed.</p>
+
+    <p>Click the button below to get started.</p>
+
+    <button mat-flat-button color="primary" (click)="startGame()">Start</button>
+
+    <div *ngIf="gameStarted" class="game-field">
+        
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Favorite food</mat-label>
+            <input matInput placeholder="Ex. Pizza" value="Sushi">
+        </mat-form-field>
+    </div>
+    
+    <div clas="result-field">
+
+    </div>
+</div>

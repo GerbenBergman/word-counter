@@ -1,34 +1,53 @@
 <div class="page-content">
     <h1>Word Counter</h1>
-    <p>
-        Welcome to the word counting game. During this game you are challenged to form three sentences which should meet certain specifications.
-        These specifications are different for each sentence and are displayed above the input box in which you should enter your sentence. In this game,
-        words are considered to contain only alphabetical characters, which means the following examples are not considered words: 
-    </p>
 
-    <ul>
-        <li>'continue,'</li>
-        <li>'end.'</li>
-        <li>'combined-word'</li>
-        <li>'blasé'</li>
-    </ul>
+    <div *ngIf="!gameStarted && !gameFinished" class="game-instructions">
+        <p>
+            Welcome to the word counting game. During this game you are challenged to form three sentences which should
+            meet certain specifications.
+            These specifications are different for each sentence and are displayed above the input box in which you
+            should enter your sentence. In this game,
+            words are considered to contain only alphabetical characters, which means the following examples are not
+            considered words:
+        </p>
 
-    <p>Both upper- and uderscore characters are allowed.</p>
+        <ul>
+            <li>'continue,'</li>
+            <li>'end.'</li>
+            <li>'combined-word'</li>
+            <li>'blasé'</li>
+        </ul>
 
-    <p>Click the button below to get started.</p>
+        <p>Both upper- and uderscore characters are allowed.</p>
 
-    <button mat-flat-button color="primary" (click)="startGame()">Start</button>
+        <p>Click the button below to get started.</p>
+    </div>
+
+    <button *ngIf="!gameStarted && !gameFinished" mat-flat-button color="primary" (click)="startGame()">Start</button>
 
     <div *ngIf="gameStarted" class="game-field">
-        
-        
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Sushi">
-        </mat-form-field>
-    </div>
-    
-    <div clas="result-field">
+        <p>{{gameConfigurations[gameStage].getInstructions()}}</p>
 
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Answer</mat-label>
+            <input #userInput matInput placeholder="Answer" value="">
+        </mat-form-field>
+
+        <button *ngIf="gameStage !== gameConfigurations.length - 1" mat-flat-button color="primary"
+            (click)="nextGameStage(); submitSentence()">Next</button>
+        <button *ngIf="gameStage === gameConfigurations.length - 1" mat-flat-button color="primary"
+            (click)="finishGame(); submitSentence()">Finish game</button>
+    </div>
+
+    <div *ngIf="gameFinished" class="result-field">
+        <div class="game-result" *ngFor="let gameResult of localGameResults; index as i">
+            <h3>Question {{i + 1}}</h3>
+
+            <ul>
+                <li>Assignment: {{gameConfigurations[i].getInstructions()}}</li>
+                <li>Your answer: {{gameResult}}</li>
+                <li>Result: {{getResult(gameResult, gameConfigurations[i]) ? 'Good job! you passed this assignment!' : 'Bummer, you failed this assignment'}}</li>
+            </ul>
+        </div>
     </div>
 </div>

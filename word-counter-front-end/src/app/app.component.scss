@@ -1,0 +1,16 @@
+mat-toolbar-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-wrapper {
+    display: block;
+    padding: 20px 80px;
+
+    ::ng-deep .page-content {
+        display: block;
+        max-width: 940px;
+        margin: 0 auto;
+        min-height: 100vh;
+    }
+}

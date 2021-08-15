@@ -46,4 +46,8 @@ export class GameResultComponent implements OnInit, OnDestroy {
 
     return false;
   }
+
+  restartGame(): void {
+    this.wordCounterGameService.resetGame();
+  }
 }

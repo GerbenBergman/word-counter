@@ -1,6 +1,5 @@
-mat-toolbar-row {
-    display: flex;
-    justify-content: space-between;
+mat-toolbar-row span {
+    cursor: pointer;
 }
 
 .page-wrapper {

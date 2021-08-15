@@ -32,6 +32,13 @@ export class WordCounterGameService {
     this.setGameResults(gameResults);
   }
 
+  resetGame(): void {
+    this._gameStarted.next(false);
+    this._gameFinished.next(false);
+    this.setGameConfigurations([]);
+    this.setGameResults([]);
+  }
+
   getGameFinished(): Observable<boolean> {
     return this.gameFinished$;
   }

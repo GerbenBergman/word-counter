@@ -5,7 +5,8 @@ import { WordCounterGameService } from '../word-counter-game.service';
 
 @Component({
   selector: 'app-game-field',
-  templateUrl: './game-field.component.html'
+  templateUrl: './game-field.component.html',
+  styleUrls: ['./game-field.component.scss']
 })
 export class GameFieldComponent implements OnInit {
   @ViewChild('userInput') userInput: any; 
@@ -38,7 +39,7 @@ export class GameFieldComponent implements OnInit {
     const configOneNumber = this.getRandomNumber(3) + 1;
     const configTwoNumber = this.getRandomNumber(3) + 1;
     const configTwoWord = this.getRandomWordFromList();
-    const configThreeNumber = this.getRandomNumber(5) + 1;
+    const configThreeNumber = this.getRandomNumber(3) + 1;
 
     const configOne = new GameConfiguration(
       `Write a sentence in which the most occuring word occurs ${configOneNumber} times`, 

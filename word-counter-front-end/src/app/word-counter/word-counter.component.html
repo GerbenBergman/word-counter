@@ -1,54 +1,6 @@
 <div class="page-content">
     <h1>Word Counter</h1>
-
-    <div *ngIf="!gameStarted && !gameFinished" class="game-instructions">
-        <p>
-            Welcome to the word counting game. During this game you are challenged to form three sentences which should
-            meet certain specifications.
-            These specifications are different for each sentence and are displayed above the input box in which you
-            should enter your sentence. In this game,
-            words are considered to contain only alphabetical characters, which means the following examples are not
-            considered words:
-        </p>
-
-        <ul>
-            <li>'continue,'</li>
-            <li>'end.'</li>
-            <li>'combined-word'</li>
-            <li>'blasé'</li>
-        </ul>
-
-        <p>Both upper- and uderscore characters are allowed.</p>
-
-        <p>Click the button below to get started.</p>
-    </div>
-
-    <button *ngIf="!gameStarted && !gameFinished" mat-flat-button color="primary" (click)="startGame()">Start</button>
-
-    <div *ngIf="gameStarted" class="game-field">
-        <h3>Question {{gameStage + 1}} of {{gameConfigurations.length}}</h3>
-
-        <p>{{gameConfigurations[gameStage].getInstructions()}}</p>
-
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Answer</mat-label>
-            <input #userInput matInput placeholder="Answer" value="">
-        </mat-form-field>
-
-        <button mat-flat-button color="primary" (click)="submitSentence()">{{gameStage !== gameConfigurations.length -1 ? 'next' : 'Finish game'}}</button>
-    </div>
-
-    <div *ngIf="gameFinished" class="result-field">
-        <div class="game-result" *ngFor="let gameResult of localGameResults; index as i">
-            <h3>Question {{i + 1}}</h3>
-
-            <ul>
-                <li>Assignment: {{gameConfigurations[i].getInstructions()}}</li>
-                <li>Your answer: {{gameResult}}</li>
-                <li>Result: {{getResult(gameResult, gameConfigurations[i]) ? 'Good job! you passed this assignment!' : 'Bummer... you failed this assignment'}}</li>
-            </ul>
-        </div>
-
-        <button mat-flat-button color="primary" [routerLink]="['/landing-page']">Back to landing page</button>
-    </div>
+    <app-game-instructions *ngIf="!gameStarted && !gameFinished"></app-game-instructions>
+    <app-game-field *ngIf="gameStarted"></app-game-field>
+    <app-game-result *ngIf="gameFinished"></app-game-result>
 </div>

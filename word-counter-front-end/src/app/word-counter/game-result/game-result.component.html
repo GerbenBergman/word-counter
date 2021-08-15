@@ -1,0 +1,12 @@
+<div *ngFor="let gameResult of gameResults; index as i">
+    <h3>Question {{i + 1}}</h3>
+
+    <ul>
+        <li>Assignment: {{gameConfigurations[i].getInstructions()}}</li>
+        <li>Your answer: {{gameResult}}</li>
+        <li>Result: {{getResult(gameResult, gameConfigurations[i]) ? 'Good job! you passed this assignment!' :
+            'Bummer... you failed this assignment'}}</li>
+    </ul>
+</div>
+
+<button mat-flat-button color="primary" [routerLink]="['/landing-page']">Back to landing page</button>

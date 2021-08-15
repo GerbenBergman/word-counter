@@ -1,0 +1,10 @@
+<h3>Question {{gameStage + 1}} of {{gameConfigurations.length}}</h3>
+
+<p>{{gameConfigurations[gameStage].getInstructions()}}</p>
+
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Answer</mat-label>
+    <input #userInput matInput placeholder="Answer" value="">
+</mat-form-field>
+
+<button mat-flat-button color="primary" (click)="submitSentence()">{{gameStage !== gameConfigurations.length -1 ? 'next' : 'Finish game'}}</button>

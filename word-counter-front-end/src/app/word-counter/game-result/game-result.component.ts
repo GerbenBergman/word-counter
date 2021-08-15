@@ -40,7 +40,7 @@ export class GameResultComponent implements OnInit, OnDestroy {
       case 'specificWordCount':
         return this.wordFrequencyAnalyser.calculateFrequencyForWord(sentence, gameConfiguration.getWord() as string) === numberOfWords;
       case 'wordFrequency':
-        const secondMostOccuringWord = this.wordFrequencyAnalyser.calculateMostFrequentNWords(sentence, numberOfWords)[1];
+        const secondMostOccuringWord = this.wordFrequencyAnalyser.calculateMostFrequentNWords(sentence, 2)[1];
         return secondMostOccuringWord ? secondMostOccuringWord.getFrequency() === numberOfWords : false;
     }
 
